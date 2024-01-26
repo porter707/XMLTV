@@ -22,6 +22,11 @@ public class XMLTV {
         xml = try XML(data: data)
     }
 
+    public init(url: String) throws {
+        let data = try Data(contentsOf: URL(string: url)!)
+        xml = try XML(data: data)
+    }
+
     public func getChannels() -> [TVChannel] {
         if channels == nil {
             let xmlChannels = xml.children(name: CHANNEL_KEY)
